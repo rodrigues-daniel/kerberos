@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import *
+from .filters import *
 
 # Register your models here.
 
@@ -24,11 +25,11 @@ class PrudutoGrupoAdmin(admin.ModelAdmin):
     search_fields = ['idproduto']
     #readonly_fields = ["datainclusao","usuarioinclusao"]
 
-@admin.register(Produtoprojeto)
-class PrudutoProjetoAdmin(admin.ModelAdmin):
-    list_display = ('idproduto', 'idprojeto',)
-    list_filter = ('idproduto','idprojeto')
-    search_fields = ['idproduto']
+#@admin.register(Produtoprojeto)
+#class PrudutoProjetoAdmin(admin.ModelAdmin):
+#    list_display = ('idproduto', 'idprojeto',)
+#    list_filter = ('idproduto','idprojeto')
+#    search_fields = ['idproduto']
     #readonly_fields = ["datainclusao","usuarioinclusao"]
 
 @admin.register(Produtosysdatabase)
@@ -37,9 +38,9 @@ class  ProdutoSysDatabaseAdmin(admin.ModelAdmin):
     list_filter = ('idproduto','database_name')
     search_fields = ['idproduto']
 
-@admin.register(Projeto)
-class  ProjetoAdmin(admin.ModelAdmin):
-    pass
+#@admin.register(Projeto)
+#class  ProjetoAdmin(admin.ModelAdmin):
+#    pass
     #readonly_fields = ["datainclusao","usuarioinclusao"]
 
 @admin.register(Usuario)
@@ -66,13 +67,25 @@ class  UsuarioprodutoAdmin(admin.ModelAdmin):
 @admin.register(Permissoeslist)
 class  PermissoeslistAdmin(admin.ModelAdmin):
     list_display = ('grupo','usuario', 'produto', 'dbname', 'typeoflogin', 'typeofrole', 'permissionlevel',)
-    list_filter = ('grupo', 'produto','permissionlevel', 'usuario',)
+    list_filter = (('ambiente',DropdownFilter) 
+            , ('grupo',DropdownFilter)
+            , ('produto',DropdownFilter)
+            , ('permissionlevel',DropdownFilter)
+            , ('usuario',DropdownFilter),)
     search_fields = ['usuario']
     readonly_fields = ('lider','grupo','usuario', 'produto', 'dbname', 'typeoflogin', 'typeofrole', 'permissionlevel',)
+    list_display_links = None
+    #exclude = ('usuario',)
     fieldsets = (
         ('Perfil',{'fields':('usuario','typeofrole',)}),
         ('Opções Avançadas',{'classes':('collapse',),'fields':('dbname',)}),
     )
+
+    def get_actions(self, request):
+        actions = super().get_actions(request)
+        if 'delete_selected' in actions:
+            del actions['delete_selected']
+        return actions    
 
     def has_add_permission(self, request):
         return False

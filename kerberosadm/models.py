@@ -10,7 +10,7 @@ from django.db import models
 
 class Grupo(models.Model):
     idgrupo = models.AutoField(db_column='IdGrupo', primary_key=True)  # Field name made lowercase.
-    nomegrupo = models.CharField(db_column='NomeGrupo', max_length=50)  # Field name made lowercase.
+    nomegrupo = models.CharField("Nome do Grupo",db_column='NomeGrupo', max_length=50)  # Field name made lowercase.
     ativo = models.BooleanField(db_column='Ativo')  # Field name made lowercase.
     #datainclusao = models.DateTimeField(db_column='DataInclusao')  # Field name made lowercase.
     #usuarioinclusao = models.CharField(db_column='UsuarioInclusao', max_length=20)  # Field name made lowercase.
@@ -118,8 +118,8 @@ class Projeto(models.Model):
 
 class Usuario(models.Model):
     idusuario = models.AutoField(db_column='IdUsuario', primary_key=True)  # Field name made lowercase.
-    loginusuario = models.CharField(db_column='LoginUsuario', max_length=50, blank=True, null=True)  # Field name made lowercase.
-    nomeusuario = models.CharField(db_column='NomeUsuario', max_length=50)  # Field name made lowercase.
+    loginusuario = models.CharField("Login",db_column='LoginUsuario', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    nomeusuario = models.CharField("Nome do Usuário",db_column='NomeUsuario', max_length=50)  # Field name made lowercase.
     ativo = models.BooleanField(db_column='Ativo')  # Field name made lowercase.
     #datainclusao = models.DateTimeField(db_column='DataInclusao')  # Field name made lowercase.
     #usuarioinclusao = models.CharField(db_column='UsuarioInclusao', max_length=20)  # Field name made lowercase.
@@ -171,6 +171,7 @@ class Usuarioproduto(models.Model):
         verbose_name_plural = 'Usuários Produtos - Vinculações'
 
 class Permissoeslist(models.Model):
+    ambiente = models.CharField(db_column='ambiente', max_length=20)
     grupo = models.CharField(db_column='Grupo', max_length=50)
     usuario = models.CharField(db_column='usuario', max_length=50)
     lider = models.BooleanField()
@@ -183,6 +184,5 @@ class Permissoeslist(models.Model):
     class Meta:
         managed = False
         db_table = 'PermissoesList'
-        # unique_together = (('idusuario', 'idproduto'),)
         verbose_name = 'Lista de Permissões'
         verbose_name_plural = 'Lista de Permissões'
