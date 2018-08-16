@@ -66,8 +66,8 @@ class  UsuarioprodutoAdmin(admin.ModelAdmin):
 
 @admin.register(Permissoeslist)
 class  PermissoeslistAdmin(admin.ModelAdmin):
-    list_display = ('grupo','usuario', 'produto', 'dbname', 'typeoflogin', 'typeofrole', 'permissionlevel',)
-    list_filter = (('ambiente',DropdownFilter) 
+    list_display = ('grupo','usuario', 'produto', 'dbname','permissionlevel',)
+    list_filter = (('ambiente',DropdownFilter)
             , ('grupo',DropdownFilter)
             , ('produto',DropdownFilter)
             , ('permissionlevel',DropdownFilter)
@@ -85,7 +85,7 @@ class  PermissoeslistAdmin(admin.ModelAdmin):
         actions = super().get_actions(request)
         if 'delete_selected' in actions:
             del actions['delete_selected']
-        return actions    
+        return actions
 
     def has_add_permission(self, request):
         return False

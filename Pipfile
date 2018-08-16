@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 django = "*"
 django-pyodbc-azure = "*"
+"django-python3-ldap" = "*"
 
 [dev-packages]
 pylint = "*"
