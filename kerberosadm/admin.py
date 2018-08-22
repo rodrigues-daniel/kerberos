@@ -48,6 +48,18 @@ class  UsuarioAdmin(admin.ModelAdmin):
     list_display = ('nomeusuario', 'loginusuario')
     search_fields = ['loginusuario','nomeusuario']
     #readonly_fields = ["datainclusao","usuarioinclusao"]
+    
+    def save_model(self, request, obj, form, change):
+        if request.user.is_superuser:
+            obj.is_staff = True
+            obj.save()
+
+
+
+
+
+
+
 
 @admin.register(Usuariogrupo)
 class  UsuariogrupoAdmin(admin.ModelAdmin):

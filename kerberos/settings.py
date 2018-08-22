@@ -121,15 +121,20 @@ LDAP_AUTH_USE_TLS = False
 
 
 # The LDAP search base for looking up users.
-LDAP_AUTH_SEARCH_BASE = "nc=*,dc=tce,dc=govrn"
+LDAP_AUTH_SEARCH_BASE = "dc=tce,dc=govrn"
 LDAP_AUTH_FORMAT_USERNAME = "django_python3_ldap.utils.format_username_active_directory"
 
 LDAP_AUTH_FORMAT_USERNAME = "django_python3_ldap.utils.format_username_active_directory"
 
 LDAP_AUTH_ACTIVE_DIRECTORY_DOMAIN = "TCE"
 
+LDAP_AUTH_CONNECTION_USERNAME = "00928955494"
+LDAP_AUTH_CONNECTION_PASSWORD = "D@z1#l79"
+
 LDAP_AUTH_FORMAT_USERNAME = "django_python3_ldap.utils.format_username_active_directory_principal"
 LDAP_AUTH_ACTIVE_DIRECTORY_DOMAIN = "tce.govrn"
+
+
 
 LDAP_AUTH_USER_FIELDS = {
     "username": "sAMAccountName",
@@ -140,6 +145,7 @@ LDAP_AUTH_USER_FIELDS = {
 
 LDAP_AUTH_OBJECT_CLASS = "user"
 
+AUTH_CLEAN_USER_DATA = "kerberos.kerberos.clean_user_data"
 
 LOGGING = {
     "version": 1,
