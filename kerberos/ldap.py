@@ -1,4 +1,4 @@
-import django_python3_ldap.utils.clean_user_data
+from django._python3_ldap import utils
 
 def clean_user_data(model_fields):
     """
@@ -6,8 +6,12 @@ def clean_user_data(model_fields):
     LDAP into a form suitable for creating a user.
     """
     # Call the default handler.
-    model_fields = django_python3_ldap.utils.clean_user_data(model_fields)
+    model_fields = utils.clean_user_data(model_fields)
     # Add our own data in.
     model_fields["is_staff"] = True
     model_fields["is_superuser"] = False 
-return model_fields
+    return model_fields
+
+
+def  menssagem():
+        print("ola mundo")

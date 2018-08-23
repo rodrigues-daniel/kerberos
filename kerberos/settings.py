@@ -131,6 +131,8 @@ LDAP_AUTH_ACTIVE_DIRECTORY_DOMAIN = "TCE"
 LDAP_AUTH_CONNECTION_USERNAME = "00928955494"
 LDAP_AUTH_CONNECTION_PASSWORD = "D@z1#l79"
 
+
+
 LDAP_AUTH_FORMAT_USERNAME = "django_python3_ldap.utils.format_username_active_directory_principal"
 LDAP_AUTH_ACTIVE_DIRECTORY_DOMAIN = "tce.govrn"
 
@@ -145,7 +147,8 @@ LDAP_AUTH_USER_FIELDS = {
 
 LDAP_AUTH_OBJECT_CLASS = "user"
 
-AUTH_CLEAN_USER_DATA = "kerberos.kerberos.clean_user_data"
+LDAP_AUTH_CLEAN_USER_DATA = "django_python3_ldap.utils.clean_user_data"
+
 
 LOGGING = {
     "version": 1,
