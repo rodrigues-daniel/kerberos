@@ -55,6 +55,10 @@ class Produtogrupo(models.Model):
     #usuarioinclusao = models.CharField(db_column='UsuarioInclusao', max_length=20)  # Field name made lowercase.
 
 
+    def __str__(self):
+        return " %s - %s" % (self.idproduto, self.IdGrupo)
+
+
 
     class Meta:
         managed = False
@@ -163,12 +167,17 @@ class Usuarioproduto(models.Model):
     #datainclusao = models.DateTimeField(db_column='DataInclusao')  # Field name made lowercase.
     #usuarioinclusao = models.CharField(db_column='UsuarioInclusao', max_length=20)  # Field name made lowercase.
 
+    
+
     class Meta:
         managed = False
         db_table = 'UsuarioProduto'
         unique_together = (('idusuario', 'idproduto'),)
         verbose_name = 'Usuário Produto - Vinculação'
         verbose_name_plural = 'Usuários Produtos - Vinculações'
+
+
+
 
 class Permissoeslist(models.Model):
     ambiente = models.CharField(db_column='ambiente', max_length=20)
@@ -183,6 +192,6 @@ class Permissoeslist(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'PermissoesList'
+        db_table = 'Permissoes'
         verbose_name = 'Lista de Permissões'
         verbose_name_plural = 'Lista de Permissões'

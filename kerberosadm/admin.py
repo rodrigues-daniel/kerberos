@@ -22,7 +22,7 @@ class PrudutoAdmin(admin.ModelAdmin):
 class PrudutoGrupoAdmin(admin.ModelAdmin):
     list_display = ('idproduto', 'idgrupo',)
     list_filter = ('idproduto','idgrupo',)
-    search_fields = ['idproduto']
+    search_fields = ['idproduto__nomeproduto']
     #readonly_fields = ["datainclusao","usuarioinclusao"]
 
 #@admin.register(Produtoprojeto)
@@ -36,7 +36,7 @@ class PrudutoGrupoAdmin(admin.ModelAdmin):
 class  ProdutoSysDatabaseAdmin(admin.ModelAdmin):
     list_display = ('idproduto', 'database_name',)
     list_filter = ('idproduto','database_name')
-    search_fields = ['idproduto']
+    search_fields = ['idproduto__nomeproduto']
 
 #@admin.register(Projeto)
 #class  ProjetoAdmin(admin.ModelAdmin):
@@ -48,20 +48,13 @@ class  UsuarioAdmin(admin.ModelAdmin):
     list_display = ('nomeusuario', 'loginusuario')
     search_fields = ['loginusuario','nomeusuario']
     #readonly_fields = ["datainclusao","usuarioinclusao"]
-    
-
-
-
-
-
-
 
 
 @admin.register(Usuariogrupo)
 class  UsuariogrupoAdmin(admin.ModelAdmin):
     list_display = ('idusuario','idgrupo',)
     list_filter = ('idusuario','idgrupo',)
-    search_fields = ['idusuario']
+    search_fields = ['idusuario__nomeusuario']
     #readonly_fields = ["datainclusao","usuarioinclusao"]
 
 
@@ -69,7 +62,7 @@ class  UsuariogrupoAdmin(admin.ModelAdmin):
 class  UsuarioprodutoAdmin(admin.ModelAdmin):
     list_display = ('idusuario','idproduto',)
     list_filter = ('idusuario','idproduto',)
-    search_fields = ['idusuario']
+    search_fields = ['idusuario__nomeusuario']
 
 
 @admin.register(Permissoeslist)
