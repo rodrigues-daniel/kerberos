@@ -1,8 +1,10 @@
 from django.contrib import admin
+from django.forms import ModelForm
 from .models import *
 from .filters import *
 
 # Register your models here.
+
 
 
 @admin.register(Grupo)
@@ -11,6 +13,8 @@ class GrupoAdmin(admin.ModelAdmin):
     list_display = ("nomegrupo","ativo",)
     list_filter = ('nomegrupo','ativo',)
     search_fields = ['nomegrupo']
+    
+
     #readonly_fields = ["datainclusao","usuarioinclusao"]
 
 @admin.register(Produto)
@@ -23,6 +27,8 @@ class PrudutoGrupoAdmin(admin.ModelAdmin):
     list_display = ('idproduto', 'idgrupo',)
     list_filter = ('idproduto','idgrupo',)
     search_fields = ['idproduto__nomeproduto']
+
+
     #readonly_fields = ["datainclusao","usuarioinclusao"]
 
 #@admin.register(Produtoprojeto)
@@ -72,7 +78,8 @@ class  PermissoeslistAdmin(admin.ModelAdmin):
             , ('grupo',DropdownFilter)
             , ('produto',DropdownFilter)
             , ('permissionlevel',DropdownFilter)
-            , ('usuario',DropdownFilter),)
+            , ('usuario',DropdownFilter)
+            ,('dbname',DropdownFilter),)
     search_fields = ['usuario']
     readonly_fields = ('lider','grupo','usuario', 'produto', 'dbname', 'typeoflogin', 'typeofrole', 'permissionlevel',)
     list_display_links = None

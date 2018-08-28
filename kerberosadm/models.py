@@ -56,7 +56,7 @@ class Produtogrupo(models.Model):
 
 
     def __str__(self):
-        return " %s - %s" % (self.idproduto, self.IdGrupo)
+        return " %s - %s" % (self.idproduto, self.idgrupo)
 
 
 
@@ -167,7 +167,7 @@ class Usuarioproduto(models.Model):
     #datainclusao = models.DateTimeField(db_column='DataInclusao')  # Field name made lowercase.
     #usuarioinclusao = models.CharField(db_column='UsuarioInclusao', max_length=20)  # Field name made lowercase.
 
-    
+
 
     class Meta:
         managed = False
