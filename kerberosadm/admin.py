@@ -13,7 +13,7 @@ class GrupoAdmin(admin.ModelAdmin):
     list_display = ("nomegrupo","ativo",)
     list_filter = ('nomegrupo','ativo',)
     search_fields = ['nomegrupo']
-    
+
 
     #readonly_fields = ["datainclusao","usuarioinclusao"]
 
@@ -73,17 +73,19 @@ class  UsuarioprodutoAdmin(admin.ModelAdmin):
 
 @admin.register(Permissoeslist)
 class  PermissoeslistAdmin(admin.ModelAdmin):
-    list_display = ('grupo','usuario', 'produto', 'dbname','permissionlevel',)
-    list_filter = (('ambiente',DropdownFilter)
+    list_display = ('ambiente','permissionlevel','dbname','grupo','produto','usuario',)
+    list_filter = (
+              ('ambiente',DropdownFilter)
+            , ('permissionlevel',DropdownFilter)
+            , ('dbname',DropdownFilter)
             , ('grupo',DropdownFilter)
             , ('produto',DropdownFilter)
-            , ('permissionlevel',DropdownFilter)
-            , ('usuario',DropdownFilter)
-            ,('dbname',DropdownFilter),)
-    search_fields = ['usuario']
+            , ('usuario',DropdownFilter),)
+
+    search_fields = ['ambiente','permissionlevel','dbname','grupo','produto','usuario']
     readonly_fields = ('lider','grupo','usuario', 'produto', 'dbname', 'typeoflogin', 'typeofrole', 'permissionlevel',)
     list_display_links = None
-    #exclude = ('usuario',)
+    
     fieldsets = (
         ('Perfil',{'fields':('usuario','typeofrole',)}),
         ('Opções Avançadas',{'classes':('collapse',),'fields':('dbname',)}),
