@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.forms import ModelForm
+from django import *
 from .models import *
 from .filters import *
 
@@ -22,8 +22,17 @@ class PrudutoAdmin(admin.ModelAdmin):
     pass
     #readonly_fields = ["datainclusao","usuarioinclusao"]
 
+
+class ProdutoGrupoform(forms.ModelForm):
+    grupos = forms.ModelMultipleChoiceField(widget=forms.SelectMultiple(),
+            queryset = Grupo.objects.all())
+    produto = forms.ModelMultipleChoiceField(widget=forms.SelectMultiple(),
+            queryset = Produto.objects.all())
+
 @admin.register(Produtogrupo)
 class PrudutoGrupoAdmin(admin.ModelAdmin):
+    form = ProdutoGrupoform
+
     list_display = ('idproduto', 'idgrupo',)
     list_filter = ('idproduto','idgrupo',)
     search_fields = ['idproduto__nomeproduto']
@@ -85,7 +94,7 @@ class  PermissoeslistAdmin(admin.ModelAdmin):
     search_fields = ['ambiente','permissionlevel','dbname','grupo','produto','usuario']
     readonly_fields = ('lider','grupo','usuario', 'produto', 'dbname', 'typeoflogin', 'typeofrole', 'permissionlevel',)
     list_display_links = None
-    
+
     fieldsets = (
         ('Perfil',{'fields':('usuario','typeofrole',)}),
         ('Opções Avançadas',{'classes':('collapse',),'fields':('dbname',)}),
