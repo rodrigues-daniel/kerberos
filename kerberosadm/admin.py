@@ -8,6 +8,13 @@ from .filters import *
 class KerberosAdminSite(admin.AdminSite):
     site_header = 'Data Control Admin'
 
+    def each_context(self, request):
+
+        app_lista = super(KerberosAdminSite,self).each_context(request)
+
+
+        return  app_lista
+
 
 admin_site = KerberosAdminSite(name="dca-admin/")
 
