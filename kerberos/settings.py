@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'kerberosadm',
+    'kerberosadm.apps.KerberosadmConfig',
     'django_python3_ldap',
 ]
 
@@ -130,8 +130,8 @@ LDAP_AUTH_FORMAT_USERNAME = "django_python3_ldap.utils.format_username_active_di
 
 LDAP_AUTH_ACTIVE_DIRECTORY_DOMAIN = "TCE"
 
-LDAP_AUTH_CONNECTION_USERNAME = "00928955494"
-LDAP_AUTH_CONNECTION_PASSWORD = "D@z1#l79"
+LDAP_AUTH_CONNECTION_USERNAME = ""
+LDAP_AUTH_CONNECTION_PASSWORD = ""
 
 
 

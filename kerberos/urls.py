@@ -15,8 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from kerberosadm.admin import  admin_site
 urlpatterns = [
-    path('kerberosadm/', include('kerberosadm.urls')),
+    path('dcadmin/', admin_site.urls),
     path('admin/', admin.site.urls),
 ]
