@@ -1,38 +1,47 @@
-from django.contrib import admin
+from django.contrib import  admin
 from .models import *
 from .filters import *
 
 # Register your models here.
 
 
+class KerberosAdminSite(admin.AdminSite):
+    site_header = 'Data Control Admin'
 
-@admin.register(Grupo)
+
+admin_site = KerberosAdminSite(name="dca-admin/")
+
+
 class GrupoAdmin(admin.ModelAdmin):
     fields = ("nomegrupo","ativo")
     list_display = ("nomegrupo","ativo",)
     list_filter = ('nomegrupo','ativo',)
     search_fields = ['nomegrupo']
+admin_site.register(Grupo,GrupoAdmin)
+
 
 
 
 
     #readonly_fields = ["datainclusao","usuarioinclusao"]
 
-@admin.register(Produto)
+
 class PrudutoAdmin(admin.ModelAdmin):
-    pass
-    #readonly_fields = ["datainclusao","usuarioinclusao"]
+      pass
+      #readonly_fields = ["datainclusao","usuarioinclusao"]
+admin_site.register(Produto,PrudutoAdmin)
 
 
 
 
 
-@admin.register(Produtogrupo)
-class PrudutoGrupoAdmin(admin.ModelAdmin):
-    
+
+class ProdutoGrupoAdmin(admin.ModelAdmin):
+
     list_display = ('idproduto', 'idgrupo',)
     list_filter = ('idproduto','idgrupo',)
     search_fields = ['idproduto__nomeproduto']
+admin_site.register(Produtogrupo,ProdutoGrupoAdmin)
 
 
     #readonly_fields = ["datainclusao","usuarioinclusao"]
@@ -44,40 +53,46 @@ class PrudutoGrupoAdmin(admin.ModelAdmin):
 #    search_fields = ['idproduto']
     #readonly_fields = ["datainclusao","usuarioinclusao"]
 
-@admin.register(Produtosysdatabase)
+
+
 class  ProdutoSysDatabaseAdmin(admin.ModelAdmin):
     list_display = ('idproduto', 'database_name',)
     list_filter = ('idproduto','database_name')
     search_fields = ['idproduto__nomeproduto']
+admin_site.register(Produtosysdatabase,ProdutoSysDatabaseAdmin)
 
 #@admin.register(Projeto)
 #class  ProjetoAdmin(admin.ModelAdmin):
 #    pass
     #readonly_fields = ["datainclusao","usuarioinclusao"]
 
-@admin.register(Usuario)
+
+
 class  UsuarioAdmin(admin.ModelAdmin):
     list_display = ('nomeusuario', 'loginusuario')
     search_fields = ['loginusuario','nomeusuario']
     #readonly_fields = ["datainclusao","usuarioinclusao"]
+admin_site.register(Usuario,UsuarioAdmin)
 
 
-@admin.register(Usuariogrupo)
+
 class  UsuariogrupoAdmin(admin.ModelAdmin):
     list_display = ('idusuario','idgrupo',)
     list_filter = ('idusuario','idgrupo',)
     search_fields = ['idusuario__nomeusuario']
     #readonly_fields = ["datainclusao","usuarioinclusao"]
+admin_site.register(Usuariogrupo,UsuariogrupoAdmin)
 
 
-@admin.register(Usuarioproduto)
+
 class  UsuarioprodutoAdmin(admin.ModelAdmin):
     list_display = ('idusuario','idproduto',)
     list_filter = ('idusuario','idproduto',)
     search_fields = ['idusuario__nomeusuario']
+admin_site.register(Usuarioproduto,UsuarioprodutoAdmin)
 
 
-@admin.register(Permissoeslist)
+
 class  PermissoeslistAdmin(admin.ModelAdmin):
     list_display = ('ambiente','permissionlevel','dbname','grupo','produto','usuario',)
     list_filter = (
@@ -111,3 +126,4 @@ class  PermissoeslistAdmin(admin.ModelAdmin):
 
     def has_delete_permission(self, request,obj=None):
        return False
+admin_site.register(Permissoeslist,PermissoeslistAdmin)
