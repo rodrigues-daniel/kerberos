@@ -13,8 +13,6 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 
 
-
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -28,9 +26,7 @@ SECRET_KEY = 'hq4#1e&7@6ql1b$649r3$!t8efzjg31=ua#dt3z!1brajk3bsk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['10.24.0.222','127.0.0.1']
-
-
+ALLOWED_HOSTS = []
 
 
 AUTH_LDAP_SERVER_URI = "ldaps://prd-ad01.tce.govrn:636"
@@ -64,7 +60,7 @@ ROOT_URLCONF = 'kerberos.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -99,7 +95,7 @@ DATABASES = {
         'PASSWORD': local_settings.PASSWORD,
         'OPTIONS': {
             'driver': 'ODBC Driver 17 for SQL Server',
-            },
+        },
     }
 }
 
@@ -134,10 +130,8 @@ LDAP_AUTH_CONNECTION_USERNAME = "00928955494"
 LDAP_AUTH_CONNECTION_PASSWORD = "D@z1#l79"
 
 
-
 LDAP_AUTH_FORMAT_USERNAME = "django_python3_ldap.utils.format_username_active_directory_principal"
 LDAP_AUTH_ACTIVE_DIRECTORY_DOMAIN = "tce.govrn"
-
 
 
 LDAP_AUTH_USER_FIELDS = {

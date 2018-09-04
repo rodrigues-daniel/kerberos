@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django import *
 from .models import *
 from .filters import *
 
@@ -15,6 +14,8 @@ class GrupoAdmin(admin.ModelAdmin):
     search_fields = ['nomegrupo']
 
 
+
+
     #readonly_fields = ["datainclusao","usuarioinclusao"]
 
 @admin.register(Produto)
@@ -23,16 +24,12 @@ class PrudutoAdmin(admin.ModelAdmin):
     #readonly_fields = ["datainclusao","usuarioinclusao"]
 
 
-class ProdutoGrupoform(forms.ModelForm):
-    grupos = forms.ModelMultipleChoiceField(widget=forms.SelectMultiple(),
-            queryset = Grupo.objects.all())
-    produto = forms.ModelMultipleChoiceField(widget=forms.SelectMultiple(),
-            queryset = Produto.objects.all())
+
+
 
 @admin.register(Produtogrupo)
 class PrudutoGrupoAdmin(admin.ModelAdmin):
-    form = ProdutoGrupoform
-
+    
     list_display = ('idproduto', 'idgrupo',)
     list_filter = ('idproduto','idgrupo',)
     search_fields = ['idproduto__nomeproduto']
