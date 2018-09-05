@@ -19,12 +19,12 @@ class KerberosAdminSite(admin.AdminSite):
 admin_site = KerberosAdminSite(name="dca-admin/")
 
 
-class GrupoAdmin(admin.ModelAdmin):
-    fields = ("nomegrupo","ativo")
-    list_display = ("nomegrupo","ativo",)
-    list_filter = ('nomegrupo','ativo',)
-    search_fields = ['nomegrupo']
-admin_site.register(Grupo,GrupoAdmin)
+class EquipeAdmin(admin.ModelAdmin):
+    fields = ("nomeequipe","equipeperfil","membros","ativo")
+    list_display = ("nomeequipe","equipeperfil","membros","ativo",)
+    list_filter = ('nomeequipe','ativo',)
+    search_fields = ['nomeequipe']
+admin_site.register(Equipe,EquipeAdmin)
 
 
 
@@ -83,12 +83,7 @@ admin_site.register(Usuario,UsuarioAdmin)
 
 
 
-class  UsuariogrupoAdmin(admin.ModelAdmin):
-    list_display = ('idusuario','idgrupo',)
-    list_filter = ('idusuario','idgrupo',)
-    search_fields = ['idusuario__nomeusuario']
-    #readonly_fields = ["datainclusao","usuarioinclusao"]
-admin_site.register(Usuariogrupo,UsuariogrupoAdmin)
+
 
 
 
