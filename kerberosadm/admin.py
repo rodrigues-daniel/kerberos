@@ -23,7 +23,7 @@ admin_site.register(Grupo,GrupoAdmin)
 
     #readonly_fields = ["datainclusao","usuarioinclusao"]
 
-@admin.register(Produto)
+
 class ProdutoAdmin(admin.ModelAdmin):
     pass
     #readonly_fields = ["datainclusao","usuarioinclusao"]
@@ -79,7 +79,7 @@ class  UsuarioprodutoAdmin(admin.ModelAdmin):
 admin_site.register(Usuarioproduto,UsuarioprodutoAdmin)
 
 
-@admin.register(Permissoeslist)
+
 class  PermissoeslistAdmin(admin.ModelAdmin):
     list_display = ('ambiente','permissionlevel','dbname','grupo','produto','usuario',)
     list_filter = (
