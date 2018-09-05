@@ -16,39 +16,32 @@ class KerberosAdminSite(admin.AdminSite):
         return  app_lista
 
 
-admin_site = KerberosAdminSite(name="dca-admin/")
+admin_site = KerberosAdminSite(name="dcadmin/")
 
 
 class EquipeAdmin(admin.ModelAdmin):
-    fields = ("nomeequipe","equipeperfil","membros","ativo")
+    filter_horizontal = ("membros",)
+    '''fields = ("nomeequipe","equipeperfil","membros","ativo")
     list_display = ("nomeequipe","equipeperfil","membros","ativo",)
     list_filter = ('nomeequipe','ativo',)
-    search_fields = ['nomeequipe']
+    search_fields = ['nomeequipe']'''
 admin_site.register(Equipe,EquipeAdmin)
 
 
 
 
-
-    #readonly_fields = ["datainclusao","usuarioinclusao"]
-
-
-class PrudutoAdmin(admin.ModelAdmin):
-      pass
-      #readonly_fields = ["datainclusao","usuarioinclusao"]
-admin_site.register(Produto,PrudutoAdmin)
-
-
-
+class ProjetoAdmin(admin.ModelAdmin):
+    pass
+admin_site.register(Projeto,ProjetoAdmin)
 
 
 
 class ProdutoGrupoAdmin(admin.ModelAdmin):
 
-    list_display = ('idproduto', 'idgrupo',)
-    list_filter = ('idproduto','idgrupo',)
-    search_fields = ['idproduto__nomeproduto']
-admin_site.register(Produtogrupo,ProdutoGrupoAdmin)
+    '''list_display = ('idproduto', 'nomeproduto',)
+    list_filter = ('idproduto','nomeproduto',)
+    search_fields = ['nomeproduto']'''
+admin_site.register(Produto,ProdutoGrupoAdmin)
 
 
     #readonly_fields = ["datainclusao","usuarioinclusao"]
@@ -63,9 +56,9 @@ admin_site.register(Produtogrupo,ProdutoGrupoAdmin)
 
 
 class  ProdutoSysDatabaseAdmin(admin.ModelAdmin):
-    list_display = ('idproduto', 'database_name',)
+    '''list_display = ('idproduto', 'database_name',)
     list_filter = ('idproduto','database_name')
-    search_fields = ['idproduto__nomeproduto']
+    search_fields = ['idproduto__nomeproduto']'''
 admin_site.register(Produtosysdatabase,ProdutoSysDatabaseAdmin)
 
 #@admin.register(Projeto)
@@ -76,22 +69,10 @@ admin_site.register(Produtosysdatabase,ProdutoSysDatabaseAdmin)
 
 
 class  UsuarioAdmin(admin.ModelAdmin):
-    list_display = ('nomeusuario', 'loginusuario')
-    search_fields = ['loginusuario','nomeusuario']
+    '''list_display = ('nomeusuario', 'loginusuario')
+    search_fields = ['loginusuario','nomeusuario']'''
     #readonly_fields = ["datainclusao","usuarioinclusao"]
 admin_site.register(Usuario,UsuarioAdmin)
-
-
-
-
-
-
-
-class  UsuarioprodutoAdmin(admin.ModelAdmin):
-    list_display = ('idusuario','idproduto',)
-    list_filter = ('idusuario','idproduto',)
-    search_fields = ['idusuario__nomeusuario']
-admin_site.register(Usuarioproduto,UsuarioprodutoAdmin)
 
 
 

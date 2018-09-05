@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'kerberosadm',
-    'django_python3_ldap',
+
 ]
 
 MIDDLEWARE = [

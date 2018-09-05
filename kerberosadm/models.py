@@ -13,11 +13,12 @@ class Usuario(models.Model):
         ('APP', 'APLICAÇÃO'),
         ('SERV', 'SERVIÇO'),
     )
-    idusuario = models.AutoField(db_column='IdUsuario', primary_key=True)  # Field name made lowercase.
+    idusuario = models.AutoField(primary_key=True)  # Field name made lowercase.
     nomeusuario = models.CharField("Nome do Usuário",max_length=50)  # Field name made lowercase.
     loginusuario = models.CharField("Login",max_length=50, blank=True, null=True)  # Field name made lowercase.
     usuariotipo =  models.CharField("Tipo",max_length=10, blank=False, null=False,choices=USUARIO_TIPO)
     ativo = models.BooleanField(db_column='Ativo')  # Field name made lowercase.
+    lider = models.BooleanField(db_column='Lider',default=False)  # Field name made lowercase.
     descricao = models.TextField("Descrição",max_length=50, blank=True,null=True)  # Field name made lowercase.
 
 
@@ -37,25 +38,29 @@ class Usuario(models.Model):
 
 
 
-class Pefil(models.Model):
 
+
+
+class Equipe(models.Model):
     PERFIL_TIPO = (
         ('DEV', 'Desenvolvimento'),
         ('SUS', 'Sustentação'),
     )
-
-    idpefil = models.AutoField(db_column='IdGrupo', primary_key=True)  # Field name made lowercase.
-    perfilnome = models.CharField("Equipe",db_column='NomeGrupo', max_length=20, choices=PERFIL_TIPO)  # Field name made lowercase.
+    idequipe = models.AutoField(primary_key=True)  # Field name made lowercase.
+    nomeequipe = models.CharField('Equipe',max_length=50,blank=False,null=False)
+    equipeperfil = models.CharField("Perfil",max_length=15,choices=PERFIL_TIPO,blank=False,null=False)
+    membros = models.ManyToManyField(Usuario)
 
     def __str__(self):
-        return self.perfilnome
+        return self.nomeequipe
 
 
 
 class Produto(models.Model):
-    idproduto = models.AutoField(db_column='IdProduto', primary_key=True)  # Field name made lowercase.
-    nomeproduto = models.CharField('Nome do Produto', db_column='NomeProduto', max_length=50)  # Field name made lowercase.
+    idproduto = models.AutoField(primary_key=True)  # Field name made lowercase.
+    nomeproduto = models.CharField('Nome do Produto', db_column='NomeProduto', max_length=50,blank=False,null=False)  # Field name made lowercase.
     novaarquitetura = models.BooleanField(db_column='NovaArquitetura')  # Field name made lowercase.
+    equipe = models.ForeignKey(Equipe, on_delete=models.CASCADE,blank=False,null=False)
     ativo = models.BooleanField(db_column='Ativo')  # Field name made lowercase.
 
 
@@ -69,15 +74,8 @@ class Produto(models.Model):
         verbose_name = 'Produto'
         verbose_name_plural = 'Produtos'
 
-class Equipe(models.Model):
-    idequipe = models.AutoField(primary_key=True)  # Field name made lowercase.
-    nomeequipe = models.CharField('Equipe',max_length=50)
-    equipeperfil = models.ForeignKey(Pefil)
-    membros = models.ManyToManyField(Usuario, through='Projeto')
-
-
 class Projeto(models.Model):
-    idprojeto = models.AutoField(db_column='IdProjeto', primary_key=True)  # Field name made lowercase.
+    idprojeto = models.AutoField(primary_key=True)  # Field name made lowercase.
     nomeprojeto = models.CharField(db_column='NomeProjeto', max_length=50)  # Field name made lowercase.
     ativo = models.BooleanField(db_column='Ativo')  # Field name made lowercase.
     equipe = models.ForeignKey(Equipe,on_delete=models.CASCADE)
@@ -91,6 +89,7 @@ class Projeto(models.Model):
     class Meta:
         managed = True
         db_table = 'Projeto'
+
 
 
 
