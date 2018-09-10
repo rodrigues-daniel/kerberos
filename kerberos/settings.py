@@ -14,7 +14,6 @@ import os
 
 
 
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -45,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'kerberosadm.apps.KerberosadmConfig',
-    'django_python3_ldap',
+    'permissoes.apps.PermissoesConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -64,7 +64,7 @@ ROOT_URLCONF = 'kerberos.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['kerberos/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
