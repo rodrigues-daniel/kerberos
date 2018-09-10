@@ -19,4 +19,5 @@ from kerberosadm.admin import  admin_site
 urlpatterns = [
     path('dcadmin/', admin_site.urls),
     path('admin/', admin.site.urls),
+    path('paginas/', include('django.contrib.flatpages.urls')),
 ]

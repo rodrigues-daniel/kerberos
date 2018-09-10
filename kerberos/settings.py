@@ -36,6 +36,10 @@ AUTH_LDAP_SERVER_URI = "ldaps://prd-ad01.tce.govrn:636"
 
 # Application definition
 
+
+
+SITE_ID = 1
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,8 +47,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
     'kerberosadm.apps.KerberosadmConfig',
+    'usuarios.apps.UsuariosConfig',
     'permissoes.apps.PermissoesConfig',
+
 
 ]
 
@@ -57,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.auth.middleware.RemoteUserMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 ]
 
 ROOT_URLCONF = 'kerberos.urls'
