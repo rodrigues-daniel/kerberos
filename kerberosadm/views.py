@@ -1,7 +1,24 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,Http404
+from django.shortcuts import render
+from kerberosadm.models import Produto
 
 from django.db import connection
+import datetime
+
+
+
+
+def index(request):
+
+    try:
+        p = Produto.objects.all()
+    except Produto.DoesNotExist:
+
+        raise Http404("Pagina Não Encontrada")
+
+    return render(request,'kerberosadm/index.html',{'valores':p})
+
 
 
 def first_view(request):
@@ -14,3 +31,5 @@ def first_view(request):
     finally:
         cursor.close()
     return HttpResponse("primeira view")
+
+

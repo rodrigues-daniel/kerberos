@@ -17,7 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from kerberosadm.admin import  admin_site
 urlpatterns = [
+    path('', include('kerberosadm.urls')),
     path('dcadmin/', admin_site.urls),
-    path('admin/', admin.site.urls),
-    path('/', include('django.contrib.flatpages.urls')),
+    path('admin/', admin.site.urls)
+    ,
 ]

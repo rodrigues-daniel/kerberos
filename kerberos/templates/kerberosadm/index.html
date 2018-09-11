@@ -1,0 +1,16 @@
+{% extends "admin/base_site.html" %}
+
+
+{% block content %}
+
+   Conteudo Aqui
+
+<ul>
+{% for conteudo in valores %}
+
+
+    <li>{{ conteudo.nomeproduto }}</li>
+
+{% endfor %}
+</ul>
+{% endblock %}
