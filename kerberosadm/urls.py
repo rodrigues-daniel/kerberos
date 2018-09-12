@@ -8,6 +8,7 @@ admin.site.index_title = 'Data Control Admin'
 
 urlpatterns = [
     # ex: /polls/
-    path('', views.index,name="current_datetime"),
+    path('', views.home,name="home"),
+    path('registro',views.login,name="login"),
     # ex: /polls/5/
     ]

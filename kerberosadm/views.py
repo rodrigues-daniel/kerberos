@@ -1,23 +1,37 @@
 from django.shortcuts import render
-from django.http import HttpResponse,Http404
-from django.shortcuts import render
+from django.http import HttpResponse,Http404,HttpResponseForbidden,HttpResponseRedirect
+from django.urls import reverse
+from django.contrib.auth import authenticate,login
 from kerberosadm.models import Produto
+from django.core.exceptions import PermissionDenied
 
 from django.db import connection
 import datetime
 
 
 
+def home(request):
 
-def index(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("login"))
 
-    try:
-        p = Produto.objects.all()
-    except Produto.DoesNotExist:
+    return render(request,"home.html")
 
-        raise Http404("Pagina Não Encontrada")
 
-    return render(request,'kerberosadm/index.html',{'valores':p})
+
+
+def login(request):
+
+    nomeUsuario = request.POST['username']
+    senha       = request.POST['password']
+
+    usuario     = authenticate(request,username=nomeUsuario,password=senha)
+    if usuario is not None:
+        login(request,usuario)
+        return HttpResponse("Logado")
+
+    else:
+        return HttpResponse("Usuario Não Encontradao!")
 
 
 
