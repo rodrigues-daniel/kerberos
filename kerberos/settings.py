@@ -27,7 +27,7 @@ SECRET_KEY = 'hq4#1e&7@6ql1b$649r3$!t8efzjg31=ua#dt3z!1brajk3bsk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['10.24.0.222','127.0.0.1']
+ALLOWED_HOSTS = ['10.24.0.62']
 
 
 
@@ -39,6 +39,7 @@ AUTH_LDAP_SERVER_URI = "ldaps://prd-ad01.tce.govrn:636"
 
 
 SITE_ID = 1
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -92,10 +93,8 @@ WSGI_APPLICATION = 'kerberos.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-try:
-    from kerberos import local_settings
-except ImportError:
-    pass
+
+import local_settings
 
 
 DATABASES = {
