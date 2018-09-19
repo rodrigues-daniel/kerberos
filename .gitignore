@@ -179,6 +179,8 @@ modules.xml
 # C extensions
 *.so
 
+# Distribution / packaging
+.Python
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
