@@ -12,12 +12,11 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 
-from .  import local_settings
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-from .  import local_settigs
+from .  import local_settings
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
