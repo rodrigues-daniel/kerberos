@@ -14,7 +14,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-from kerberos import local_settings
+from  kerberos import local_settings
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -85,7 +85,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'kerberos.wsgi.application'
+WSGI_APPLICATION = 'wsgi'
 
 
 # Database
@@ -109,13 +109,8 @@ DATABASES = {
 }
 
 
-'''
-import ldap
-from django_auth_ldap.config import LDAPSearch, GroupOfNamesType
-'''
 
 AUTHENTICATION_BACKENDS = (
-    'django_python3_ldap.auth.LDAPBackend',
     'django.contrib.auth.backends.ModelBackend',
     'django.contrib.auth.backends.RemoteUserBackend',
 )
@@ -126,12 +121,10 @@ LDAP_AUTH_URL = "ldap://prd-ad01.tce.govrn:389"
 # Initiate TLS on connection.
 LDAP_AUTH_USE_TLS = False
 
-
 # The LDAP search base for looking up users.
 LDAP_AUTH_SEARCH_BASE = "dc=tce,dc=govrn"
 LDAP_AUTH_FORMAT_USERNAME = "django_python3_ldap.utils.format_username_active_directory"
 
-LDAP_AUTH_FORMAT_USERNAME = "django_python3_ldap.utils.format_username_active_directory"
 
 LDAP_AUTH_ACTIVE_DIRECTORY_DOMAIN = "TCE"
 
@@ -172,7 +165,6 @@ LOGGING = {
         },
     },
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
