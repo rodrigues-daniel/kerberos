@@ -1,4 +1,4 @@
-#!/home/daniel/repo/kerberos/bin/python
+#!/home/sudcl/www/kerberos/bin/python
 
 import sys
 import getopt
