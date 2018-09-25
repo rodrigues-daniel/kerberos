@@ -1,6 +1,7 @@
 
 Django
 gunicorn
+pyodbc 
 django-pyodbc-azure
   
  
