@@ -25,7 +25,7 @@ SECRET_KEY = 'hq4#1e&7@6ql1b$649r3$!t8efzjg31=ua#dt3z!1brajk3bsk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [local_settings.PROD]
+ALLOWED_HOSTS = ['*']
 
 
 

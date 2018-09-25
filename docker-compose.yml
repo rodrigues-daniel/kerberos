@@ -1,5 +1,5 @@
 version: '3'
-  services:
+services:
     nginx:
       image: nginx:latest
       container_name: nginx_dcl
@@ -12,10 +12,10 @@ version: '3'
         - web
     
     web:
-      build: .
+      build:  .
       container_name: django_dcl
       command: bash -c "gunicorn kerberos.wsgi -b 0.0.0.0:8000 --workers 3"
       volumes:
         - ./src:/src
       expose:
-- "8000"
+        - "8000"
