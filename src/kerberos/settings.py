@@ -82,7 +82,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'wsgi'
+WSGI_APPLICATION = 'kerberos.wsgi.application'
 
 
 # Database
