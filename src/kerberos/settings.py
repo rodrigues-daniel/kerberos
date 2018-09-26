@@ -27,10 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
-
 # Application definition
-
 
 
 SITE_ID = 1
@@ -49,8 +46,9 @@ INSTALLED_APPS = [
     'usuarios.apps.UsuariosConfig',
     'permissoes.apps.PermissoesConfig',
 
-
 ]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -153,5 +151,10 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = 'www/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    'static/',
+]
 
