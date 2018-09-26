@@ -3,6 +3,4 @@ Django
 gunicorn
 pyodbc
 pymssql
-django-pyodbc-azure
-  
- 
+django-pyodbc-azure 

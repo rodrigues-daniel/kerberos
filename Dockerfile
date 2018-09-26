@@ -18,7 +18,6 @@ RUN apt-get -y install locales
 RUN locale-gen en_US.UTF-8
 RUN update-locale LANG=en_US.UTF-8
 
-#RUN ["apt-get", "install","-y","unixodbc-dev"]
  
 
 ENV PYTHONUNBUFFERED 1
