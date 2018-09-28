@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 services:
     nginx:
       image: nginx:latest
@@ -9,9 +9,9 @@ services:
         - ./src:/src
         - ./config/nginx:/etc/nginx/conf.d
       depends_on:
-        - web
+        - kerberos 
     
-    web:
+    kerberos:
       build:  .
       container_name: django_dcl
       command: bash -c "gunicorn --env DJANGO_SETTINGS_MODULE=kerberos.settings kerberos.wsgi -b 0.0.0.0:8000 --workers 3"
