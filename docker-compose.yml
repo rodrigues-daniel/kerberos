@@ -13,7 +13,7 @@ services:
     
     kerberos:
       build:  .
-      container_name: django_dcl
+      container_name: kerberos_dcl
       command: bash -c "gunicorn --env DJANGO_SETTINGS_MODULE=kerberos.settings kerberos.wsgi -b 0.0.0.0:8000 --workers 3"
       volumes:
         - ./src:/src
