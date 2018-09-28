@@ -18,6 +18,6 @@ class Permissoeslist(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'Permissoes'
+        db_table = 'PermissoesList'
         verbose_name = 'Lista de Permissões'
         verbose_name_plural = 'Lista de Permissões'
