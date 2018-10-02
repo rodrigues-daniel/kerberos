@@ -47,6 +47,30 @@ class Produto(models.Model):
         verbose_name_plural = 'Produtos'
 
 
+class ProdutogrupoTeste(models.Model):
+    #idproduto = models.ForeignKey(Produto, models.DO_NOTHING, db_column='IdProduto', primary_key=True, verbose_name='Produto')  # Field name made lowercase.
+    idgrupo = models.ForeignKey(Grupo)  # Field name made lowercase.
+    idproduto = models.ManyToManyField(Produto)
+    ativo = models.BooleanField()  # Field name made lowercase.
+    #datainclusao = models.DateTimeField(db_column='DataInclusao')  # Field name made lowercase.
+    #usuarioinclusao = models.CharField(db_column='UsuarioInclusao', max_length=20)  # Field name made lowercase.
+
+
+    def __str__(self):
+        return " %s - %s" % (self.idproduto, self.idgrupo)
+
+
+
+    class Meta:
+        managed = False
+        db_table = 'ProdutoGrupo'
+        #unique_together = (('idproduto', 'idgrupo'),)
+        verbose_name = 'Produto teste - Grupo teste'
+        verbose_name_plural = 'Produtos teste - Grupos teste'
+        ordering = ['idpgrupo']
+
+
+
 class Produtogrupo(models.Model):
     idproduto = models.ForeignKey(Produto, models.DO_NOTHING, db_column='IdProduto', primary_key=True, verbose_name='Produto')  # Field name made lowercase.
     idgrupo = models.ForeignKey(Grupo, models.DO_NOTHING, db_column='IdGrupo', verbose_name='Grupo')  # Field name made lowercase.
@@ -67,6 +91,15 @@ class Produtogrupo(models.Model):
         verbose_name = 'Produto - Grupo'
         verbose_name_plural = 'Produtos - Grupos'
         ordering = ['idproduto', 'idgrupo']
+
+
+
+
+
+
+
+
+
 
 
 class Produtoprojeto(models.Model):
