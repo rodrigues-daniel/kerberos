@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponse,Http404,HttpResponseForbidden,HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import authenticate,login
-from kerberosadm.models import Produto
 from django.core.exceptions import PermissionDenied
 
 from django.db import connection
@@ -46,4 +45,6 @@ def first_view(request):
         cursor.close()
     return HttpResponse("primeira view")
 
+def reg(request):
+    return  HttpResponse("OK")
 

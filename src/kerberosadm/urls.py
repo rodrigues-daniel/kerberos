@@ -10,5 +10,6 @@ urlpatterns = [
     # ex: /polls/
     path('', views.home,name="home"),
     path('registro',views.login,name="login"),
+    path('reg',views.reg,name="reg")
     # ex: /polls/5/
     ]

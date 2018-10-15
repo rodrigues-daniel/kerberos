@@ -50,16 +50,6 @@ admin_site.register(Produtogrupo, ProdutoGrupoAdmin)
 
 
 
-
-#  Modificar ----
-class ProdutoGrupoAdmin2(admin.ModelAdmin):
-
-    list_display = ('idp')
-    #list_filter = ('idproduto','idgrupo',)
-    #search_fields = ['idproduto__nomeproduto']
-admin_site.register(ProdutogrupoTeste, ProdutoGrupoAdmin2)
-
-
 class  ProdutoSysDatabaseAdmin(admin.ModelAdmin):
     list_display = ('idproduto', 'database_name',)
     list_filter = ('idproduto','database_name')

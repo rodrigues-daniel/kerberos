@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from kerberosadm.admin import  admin_site
 urlpatterns = [
-    path('dev', include('kerberosadm.urls')),
+    path('dev/', include('kerberosadm.urls')),
     path('', admin_site.urls),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
