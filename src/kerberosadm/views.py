@@ -46,5 +46,5 @@ def first_view(request):
     return HttpResponse("primeira view")
 
 def reg(request):
-    return  HttpResponse("OK")
+    return render(request, "main.html",{}) 
 
