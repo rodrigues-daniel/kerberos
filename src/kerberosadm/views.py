@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse,Http404,HttpResponseForbidden,HttpResponseRedirect
+from django.http import HttpResponse,HttpResponseForbidden,HttpResponseRedirect,HttpResponseNotFound
 from django.urls import reverse
 from django.contrib.auth import authenticate,login
 from django.core.exceptions import PermissionDenied
@@ -48,3 +48,13 @@ def first_view(request):
 def reg(request):
     return render(request, "main.html",{}) 
 
+
+def notfound(request,foo=0):
+    if foo:
+        return HttpResponseNotFound('<h1>Pagina Encontrada!</h1>')
+    else:
+        return HttpResponse('<h1> Pagina Não Encontrada</h1>')
+
+
+def pagina(request):
+    return HttpResponse('<h2> Pagina Resposta </h2>')
