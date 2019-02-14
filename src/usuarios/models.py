@@ -7,9 +7,7 @@ class Usuario(models.Model):
     idusuario = models.AutoField(db_column='IdUsuario', primary_key=True)  # Field name made lowercase.
     loginusuario = models.CharField("Login",db_column='LoginUsuario', max_length=50, blank=True, null=True)  # Field name made lowercase.
     nomeusuario = models.CharField("Nome do Usuário",db_column='NomeUsuario', max_length=50)  # Field name made lowercase.
-    ativo = models.BooleanField(db_column='Ativo')  # Field name made lowercase.
-    #datainclusao = models.DateTimeField(db_column='DataInclusao')  # Field name made lowercase.
-    #usuarioinclusao = models.CharField(db_column='UsuarioInclusao', max_length=20)  # Field name made lowercase.
+    ativo = models.BooleanField(db_column='Ativo')  # Field name made lowercase.   
 
 
     def __str__(self):
@@ -22,6 +20,10 @@ class Usuario(models.Model):
         verbose_name = 'Usuário'
         verbose_name_plural = 'Usuários'
         ordering = ['nomeusuario',]
+        
+        
+        
+        
 
 class Usuariogrupo(models.Model):
     idusuario = models.ForeignKey(Usuario, models.DO_NOTHING, db_column='IdUsuario', primary_key=True, verbose_name='Usuário')  # Field name made lowercase.
@@ -47,8 +49,7 @@ class Usuarioproduto(models.Model):
     idusuario = models.ForeignKey(Usuario, models.DO_NOTHING, db_column='IdUsuario', verbose_name='Usuário')  # Field name made lowercase.
     idproduto = models.ForeignKey(Produto, models.DO_NOTHING, db_column='IdProduto', verbose_name='Produto')  # Field name made lowercase.
     lider = models.BooleanField(db_column='Lider')  # Field name made lowercase.
-    #datainclusao = models.DateTimeField(db_column='DataInclusao')  # Field name made lowercase.
-    #usuarioinclusao = models.CharField(db_column='UsuarioInclusao', max_length=20)  # Field name made lowercase.
+    
 
 
 
